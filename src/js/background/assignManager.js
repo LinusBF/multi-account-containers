@@ -242,6 +242,21 @@ const assignManager = {
       }
     },{urls: ["<all_urls>"], types: ["main_frame"]});
 
+    // Listen to "Open new tab in current context" command
+    browser.commands.onCommand.addListener(async function(command) {
+      if (command === "new-tab-inside-current-container") {
+        const tabs = await browser.tabs.query({currentWindow: true, active: true});
+        const currentTab = tabs[0];
+        const cookieStoreId = currentTab.cookieStoreId;
+        return browser.tabs.create({
+          url: undefined,
+          active: true,
+          pinned: false,
+          cookieStoreId
+        });
+      }
+    });
+
   },
 
   async _onClickedHandler(info, tab) {

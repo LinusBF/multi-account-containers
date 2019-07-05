@@ -40,6 +40,12 @@
         "mac": "MacCtrl+Period"
       },
       "description": "Open containers panel"
+    },
+    "new-tab-inside-current-container": {
+      "suggested_key": {
+        "default": "Ctrl+E"
+      },
+      "description": "Opens a new tab within the same container as the current one"
     }
   },
 
